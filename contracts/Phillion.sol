@@ -129,7 +129,6 @@ contract PhillionToken is ERC20Interface, Owned {
     // Constructor
     // ------------------------------------------------------------------------
     function PhillionToken() Owned() {
-        owner = 0x33021BD0e434862E9a19e0b8d2298fCc05F4043D;
         balances[owner] = totalSupply;
     }
 
