@@ -15,13 +15,13 @@ contract ERC20Interface {
     uint public totalSupply;
     function balanceOf(address _owner) constant returns (uint balance);
     function transfer(address _to, uint _value) returns (bool success);
-    function transferFrom(address _from, address _to, uint _value) 
+    function transferFrom(address _from, address _to, uint _value)
         returns (bool success);
     function approve(address _spender, uint _value) returns (bool success);
-    function allowance(address _owner, address _spender) constant 
+    function allowance(address _owner, address _spender) constant
         returns (uint remaining);
     event Transfer(address indexed _from, address indexed _to, uint _value);
-    event Approval(address indexed _owner, address indexed _spender, 
+    event Approval(address indexed _owner, address indexed _spender,
         uint _value);
 }
 
@@ -61,7 +61,7 @@ contract Owned {
         newOwner = _newOwner;
     }
 
- 
+
     // ------------------------------------------------------------------------
     // New owner has to accept transfer of contract
     // ------------------------------------------------------------------------
@@ -110,8 +110,8 @@ contract PhillionToken is ERC20Interface, Owned {
     // ------------------------------------------------------------------------
     string public constant symbol = "PHN";
     string public constant name = "Phillion";
-    uint8 public decimals = 18;
-    
+    uint8 public constant decimals = 18;
+
     uint public constant totalSupply = 5 * 10**9 * 10**18;
 
     // ------------------------------------------------------------------------
@@ -205,7 +205,7 @@ contract PhillionToken is ERC20Interface, Owned {
     // transferred to the spender's account
     // ------------------------------------------------------------------------
     function allowance(
-        address _owner, 
+        address _owner,
         address _spender
     ) constant returns (uint remaining) {
         return allowed[_owner][_spender];
@@ -223,7 +223,7 @@ contract PhillionToken is ERC20Interface, Owned {
     // Owner can transfer out any accidentally sent ERC20 tokens
     // ------------------------------------------------------------------------
     function transferAnyERC20Token(address tokenAddress, uint amount)
-      onlyOwner returns (bool success) 
+      onlyOwner returns (bool success)
     {
         return ERC20Interface(tokenAddress).transfer(owner, amount);
     }
